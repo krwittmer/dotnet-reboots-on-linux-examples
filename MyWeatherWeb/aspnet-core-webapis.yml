@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+
+  aspnetwebapi1:
+    image: my-login-docker-id/aspnet-core-repo:my-weather-webapi-1
+    build:
+      context: MyWeatherWebApi
+      dockerfile: Dockerfile
+    # Set environment variables
+    environment:
+      ASPNETCORE_URLS: "http://*:5000"
+    # Set the port mapping
+    ports:
+      - "80:5000"
+    # Set the container startup order
+    depends_on:
+      - aspnetcore_runtime_only
+  # Image contains the .NET Core and ASP.NET Core bits 
+  aspnetcore_runtime_only:
+    image: microsoft/dotnet:core
+

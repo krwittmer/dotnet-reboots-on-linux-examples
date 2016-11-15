@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Weather Home Page";
+}
+
+@model MyWeatherWebApp.ViewModels.WeatherViewModel
+
+@{
+}
+
+<h2>@Model.SummaryDescription</h2>
+
+<p>
+    Current temperature is: @Model.Temperature.Current
+</p>
+<p>
+    High temperature for today was: @Model.Temperature.High
+</p>
+<p>
+    Low temperature for today was: @Model.Temperature.Low
+</p>
+<p>
+    Pressure: @Model.Pressure
+</p>
+<p>
+    Humidity: @Model.Humidity
+</p>
+<p>
+    Wind speed: @Model.Wind.Speed
+</p>
+
+<form asp-controller="Home" asp-action="Index" method="post">
+    <select asp-for="SelectedCity" asp-items="Model.Cities"></select> 
+    <button type="submit">Show Current City Weather</button>
+</form>
